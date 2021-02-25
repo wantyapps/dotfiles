@@ -12,6 +12,7 @@ vim.cmd("colorscheme gruvbox")
 --[[
 Loading options (for example 'set nu' in Vimscript) from a file
 ]]
+vim.g.gruvbox_italic = 1
 require('options')
 
 --[[

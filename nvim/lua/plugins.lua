@@ -12,7 +12,7 @@ return require("packer").startup(function()
 	use "gkeep/iceberg-dark"
 	use "cocopon/iceberg.vim"
 	use "itchyny/lightline.vim"
-	use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+	use "morhetz/gruvbox"
 	-- LSP
 	use "neovim/nvim-lspconfig"
 	use "nvim-lua/lsp_extensions.nvim"
