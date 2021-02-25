@@ -6,24 +6,18 @@ local map = vim.api.nvim_set_keymap
 local g = vim.g
 
 -- Options {{{
-opt.swapfile         = false
-wopt.number          = true
-wopt.relativenumber  = true
-wopt.cursorline      = true
-wopt.spell           = true
-opt.hidden           = true
-opt.cmdheight        = 2
-opt.updatetime       = 300
-opt.showmode         = false
-opt.termguicolors    = true
-vim.cmd("let g:netrw_dirhistmax = 0")
-
---[[
-E5113: Error while calling lua chunk: options.lua:14: Cannot unset option 'signcolumn'
-because it doesn't have
-a global value
-]]
-vim.cmd("set signcolumn=yes")
+opt.swapfile           = false
+wopt.number            = true
+wopt.relativenumber    = true
+wopt.cursorline        = true
+wopt.spell             = true
+opt.hidden             = true
+opt.cmdheight          = 2
+opt.updatetime         = 300
+opt.showmode           = false
+opt.termguicolors      = true
+g.netrw_dirhistmax     = 0
+wopt.signcolumn        = "yes"
 -- }}}
 
 -- Keymapping Stuff {{{
