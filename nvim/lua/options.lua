@@ -9,12 +9,13 @@ local g = vim.g
 opt.swapfile         = false
 wopt.number          = true
 wopt.relativenumber  = true
-opt.termguicolors    = true
 wopt.cursorline      = true
 wopt.spell           = true
 opt.hidden           = true
 opt.cmdheight        = 2
 opt.updatetime       = 300
+opt.showmode         = false
+opt.termguicolors    = true
 vim.cmd("let g:netrw_dirhistmax = 0")
 
 --[[
@@ -22,7 +23,7 @@ E5113: Error while calling lua chunk: options.lua:14: Cannot unset option 'signc
 because it doesn't have
 a global value
 ]]
-vim.cmd("set signcolumn=number")
+vim.cmd("set signcolumn=yes")
 -- }}}
 
 -- Keymapping Stuff {{{
@@ -68,7 +69,7 @@ local on_attach = function(client)
     require'completion'.on_attach(client)
 end
 
-nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+nvim_lsp.rls.setup({ on_attach=on_attach })
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
