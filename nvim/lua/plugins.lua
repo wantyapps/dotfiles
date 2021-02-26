@@ -11,8 +11,16 @@ return require("packer").startup(function()
 	use "kyazdani42/nvim-web-devicons"
 	use "gkeep/iceberg-dark"
 	use "cocopon/iceberg.vim"
-	use "itchyny/lightline.vim"
 	use "morhetz/gruvbox"
+	-- Lightline (statusline)
+	use "itchyny/lightline.vim"
+	use "sainnhe/artify.vim"
+	use "itchyny/vim-gitbranch"
+	use "macthecadillac/lightline-gitdiff"
+	use "albertomontesg/lightline-asyncrun"
+	use "rmolin88/pomodoro.vim"
+	-- Tmuxline
+	use "edkolev/tmuxline.vim"
 	-- LSP
 	use "neovim/nvim-lspconfig"
 	use "nvim-lua/lsp_extensions.nvim"

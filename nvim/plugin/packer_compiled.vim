@@ -32,9 +32,17 @@ local function try_loadstring(s, component, name)
 end
 
 _G.packer_plugins = {
+  ["artify.vim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/artify.vim"
+  },
   ["completion-nvim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/completion-nvim"
+  },
+  gruvbox = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/gruvbox"
   },
   ["iceberg-dark"] = {
     loaded = true,
@@ -43,6 +51,14 @@ _G.packer_plugins = {
   ["iceberg.vim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/iceberg.vim"
+  },
+  ["lightline-asyncrun"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lightline-asyncrun"
+  },
+  ["lightline-gitdiff"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lightline-gitdiff"
   },
   ["lightline.vim"] = {
     loaded = true,
@@ -67,6 +83,10 @@ _G.packer_plugins = {
   ["plenary.nvim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  ["pomodoro.vim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/pomodoro.vim"
   },
   ["popup.nvim"] = {
     loaded = true,
@@ -99,6 +119,10 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
+  ["vim-gitbranch"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-gitbranch"
   },
   ["vim-gitgutter"] = {
     loaded = true,

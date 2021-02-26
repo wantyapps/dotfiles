@@ -49,6 +49,9 @@ vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\\<C-p>" : "\\<S-Tab>"')
 vim.cmd('autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif')
 -- }}}
 
+-- Tmuxline Config {{{
+-- }}}
+
 -- LSP Config {{{
 -- Again, still learning how to set things in lua
 vim.cmd('set completeopt=menuone,noinsert,noselect')
