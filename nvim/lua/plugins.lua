@@ -1,6 +1,8 @@
 vim.cmd("packadd packer.nvim")
 
 return require("packer").startup(function()
+	use {"wbthomason/packer.nvim", opt = true}
+
 	use "tpope/vim-commentary"
 	use "tpope/vim-dispatch"
 	use "tpope/vim-fugitive"
@@ -12,6 +14,7 @@ return require("packer").startup(function()
 	use "gkeep/iceberg-dark"
 	use "cocopon/iceberg.vim"
 	use "morhetz/gruvbox"
+	use "spolu/dwm.vim"
 	-- Lightline (statusline)
 	use "itchyny/lightline.vim"
 	use "sainnhe/artify.vim"
@@ -19,8 +22,8 @@ return require("packer").startup(function()
 	use "macthecadillac/lightline-gitdiff"
 	use "albertomontesg/lightline-asyncrun"
 	use "rmolin88/pomodoro.vim"
-	-- Tmuxline
-	use "edkolev/tmuxline.vim"
+	use "nvim-treesitter/nvim-treesitter"
+	use "dracula/vim"
 	-- LSP
 	use "neovim/nvim-lspconfig"
 	use "nvim-lua/lsp_extensions.nvim"
@@ -31,6 +34,8 @@ return require("packer").startup(function()
 	use "nvim-telescope/telescope.nvim"
 	-- My plugins
 	use "wantyapps/vim-fountainpen"
+	-- use "wantyapps/WantyPlugin"
+	use {"wantyapps/WantyPlugin", branch = "dev"}
 	-- Secret writing
 	use "ernstwi/vim-secret"
 end)

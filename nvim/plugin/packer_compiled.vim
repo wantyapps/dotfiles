@@ -32,6 +32,10 @@ local function try_loadstring(s, component, name)
 end
 
 _G.packer_plugins = {
+  WantyPlugin = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/WantyPlugin"
+  },
   ["artify.vim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/artify.vim"
@@ -39,6 +43,10 @@ _G.packer_plugins = {
   ["completion-nvim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/completion-nvim"
+  },
+  ["dwm.vim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/dwm.vim"
   },
   gruvbox = {
     loaded = true,
@@ -79,6 +87,11 @@ _G.packer_plugins = {
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+  },
+  ["packer.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,

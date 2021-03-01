@@ -22,7 +22,7 @@ wopt.signcolumn        = "yes"
 
 -- Keymapping Stuff {{{
 options = { noremap = true }
-map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', options)
+map('n', '<leader>ff', '<cmd>Telescope file_browser<cr>', options)
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', options)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', options)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', options)
@@ -47,9 +47,6 @@ vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\\<C-p>" : "\\<S-Tab>"')
 
 -- Some more things I don't know how to set in lua
 vim.cmd('autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif')
--- }}}
-
--- Tmuxline Config {{{
 -- }}}
 
 -- LSP Config {{{
