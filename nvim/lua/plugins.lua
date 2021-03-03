@@ -38,4 +38,6 @@ return require("packer").startup(function()
 	use {"wantyapps/WantyPlugin", branch = "dev"}
 	-- Secret writing
 	use "ernstwi/vim-secret"
+	-- TJ!!!
+	use "tjdevries/nlua.nvim"
 end)

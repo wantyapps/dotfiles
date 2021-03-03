@@ -32,7 +32,7 @@ map('n', '<leader>fbi', '<cmd>Telescope builtin<cr>', options)
 -- Floaterm keymap
 map('n', '<leader>,', '<cmd>FloatermNew<cr>', options)
 -- LSP hover and rename
-vim.cmd('nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>')
+vim.cmd('nnoremap <silent> Q     <cmd>lua vim.lsp.buf.hover()<CR>')
 vim.cmd('nnoremap <silent> Y     <cmd>lua vim.lsp.buf.rename()<CR>')
 -- Tab controls
 map('n', '<leader>tl', '<cmd>tabl<cr>', options)
@@ -174,3 +174,16 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 		update_in_insert = true,
 	}
 )
+
+-- Lua
+local nvim_lsp = require'lspconfig'
+
+local on_attach = function(client)
+	require'completion'.on_attach(client)
+end
+
+-- require('nlua.lsp.nvim').setup({ on_attach=on_attach })
+
+require('nlua.lsp.nvim').setup(require('lspconfig'), {
+	on_attach = on_attach,
+})

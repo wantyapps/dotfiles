@@ -2,6 +2,11 @@
 vim.g.mapleader = ";"
 
 --[[
+Font and color config (italic, keywords etc.)
+]]
+-- require('colors')
+
+--[[
 Loading options (for example 'set nu' in Vimscript) from a file
 ]]
 require('options')
@@ -12,15 +17,10 @@ require('plugins')
 --[[
 Setting colorscheme in lua, similar to `vim.cmd("colorscheme gruvbox")`
 ]]
-vim.g.gruvbox_italic = 1
-vim.g.colors_name = "gruvbox"
+vim.g.nord_italic = 1
+vim.g.colors_name = "nord"
 
 --[[
 Telescope.nvim config
 ]]
 require('telescope')
-
---[[
-Font and color config (italic, keywords etc.)
-]]
-require('colors')

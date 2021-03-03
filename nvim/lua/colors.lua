@@ -1,3 +1,7 @@
+-- vim.cmd("highlight LspDiagnosticsVirtualTextError guifg=red gui=bold")
+-- vim.cmd("highlight LspDiagnosticsVirtualTextWarning guifg=orange gui=bold")
+-- vim.cmd("highlight LspDiagnosticsVirtualTextInformation guifg=yellow gui=bold")
+-- vim.cmd("highlight LspDiagnosticsVirtualTextHint guifg=green gui=bold")
 vim.cmd("highlight Comment cterm=italic gui=italic")
 vim.cmd("highlight Statement cterm=italic gui=italic")
 vim.cmd("highlight Function cterm=italic gui=italic")
