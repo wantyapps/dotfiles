@@ -40,4 +40,12 @@ return require("packer").startup(function()
 	use "ernstwi/vim-secret"
 	-- TJ!!!
 	use "tjdevries/nlua.nvim"
+	-- Lightline
+	use "kamwitsta/nordisk"
+	-- Buffer hiding-kinda
+	use "TaDaa/vimade"
+	-- Buffer complete
+	use "steelsojka/completion-buffers"
+	-- Rust
+	use "sharksforarms/vim-rust"
 end)

@@ -18,6 +18,7 @@ opt.showmode           = false
 opt.termguicolors      = true
 g.netrw_dirhistmax     = 0
 wopt.signcolumn        = "yes"
+opt.pumblend           = 10
 -- }}}
 
 -- Keymapping Stuff {{{
@@ -32,7 +33,7 @@ map('n', '<leader>fbi', '<cmd>Telescope builtin<cr>', options)
 -- Floaterm keymap
 map('n', '<leader>,', '<cmd>FloatermNew<cr>', options)
 -- LSP hover and rename
-vim.cmd('nnoremap <silent> Q     <cmd>lua vim.lsp.buf.hover()<CR>')
+vim.cmd('nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>')
 vim.cmd('nnoremap <silent> Y     <cmd>lua vim.lsp.buf.rename()<CR>')
 -- Tab controls
 map('n', '<leader>tl', '<cmd>tabl<cr>', options)
@@ -48,6 +49,21 @@ vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\\<C-p>" : "\\<S-Tab>"')
 -- Some more things I don't know how to set in lua
 vim.cmd('autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif')
 -- }}}
+
+-- Lightline Config {{{
+vim.cmd("let g:lightline = {'colorscheme': 'nord',}")
+-- }}}
+
+-- Buffer Completion Config {{{
+vim.g.completion_chain_complete_list = {
+  default = {
+    { complete_items = { 'lsp' } },
+    { complete_items = { 'buffers' } },
+    { complete_items = { 'snippet' } },
+    { mode = { '<c-p>' } },
+    { mode = { '<c-n>' } }
+  },
+}
 
 -- LSP Config {{{
 -- Again, still learning how to set things in lua
@@ -186,4 +202,7 @@ end
 
 require('nlua.lsp.nvim').setup(require('lspconfig'), {
 	on_attach = on_attach,
+	globals = {
+		"use",
+	},
 })
