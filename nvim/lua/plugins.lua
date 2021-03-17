@@ -48,4 +48,6 @@ return require("packer").startup(function()
 	use "steelsojka/completion-buffers"
 	-- Rust
 	use "sharksforarms/vim-rust"
+	-- Lazygit
+	use "kdheepak/lazygit.nvim"
 end)

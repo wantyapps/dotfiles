@@ -30,6 +30,7 @@ map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', options)
 map('n', '<leader>fc', '<cmd>Telescope commands<cr>', options)
 map('n', '<leader>fcs', '<cmd>Telescope colorscheme<cr>', options)
 map('n', '<leader>fbi', '<cmd>Telescope builtin<cr>', options)
+map('n', '<leader>gg',  '<cmd>LazyGit<cr>', options)
 -- Floaterm keymap
 map('n', '<leader>,', '<cmd>FloatermNew<cr>', options)
 -- LSP hover and rename
