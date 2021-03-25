@@ -40,6 +40,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/artify.vim"
   },
+  ["completion-buffers"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/completion-buffers"
+  },
   ["completion-nvim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/completion-nvim"
@@ -60,6 +64,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/iceberg.vim"
   },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
+  },
   ["lightline-asyncrun"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lightline-asyncrun"
@@ -76,9 +84,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lsp_extensions.nvim"
   },
+  ["nlua.nvim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nlua.nvim"
+  },
   ["nord-vim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nord-vim"
+  },
+  nordisk = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nordisk"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -108,6 +124,10 @@ _G.packer_plugins = {
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  vim = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim"
   },
   ["vim-commentary"] = {
     loaded = true,
@@ -141,9 +161,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
   },
+  ["vim-rust"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-rust"
+  },
   ["vim-secret"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-secret"
+  },
+  vimade = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vimade"
   }
 }
 

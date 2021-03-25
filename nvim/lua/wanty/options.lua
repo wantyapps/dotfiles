@@ -22,7 +22,7 @@ opt.pumblend           = 10
 -- }}}
 
 -- Keymapping Stuff {{{
-options = { noremap = true }
+local options = { noremap = true }
 map('n', '<leader>ff', '<cmd>Telescope file_browser<cr>', options)
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', options)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', options)
@@ -52,7 +52,7 @@ vim.cmd('autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif')
 -- }}}
 
 -- Lightline Config {{{
-vim.cmd("let g:lightline = {'colorscheme': 'nord',}")
+vim.cmd("let g:lightline = {'colorscheme': 'gruvbox',}")
 -- }}}
 
 -- Buffer Completion Config {{{
@@ -207,3 +207,4 @@ require('nlua.lsp.nvim').setup(require('lspconfig'), {
 		"use",
 	},
 })
+-- }}}

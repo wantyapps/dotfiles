@@ -22,8 +22,8 @@ return require("packer").startup(function()
 	use "macthecadillac/lightline-gitdiff"
 	use "albertomontesg/lightline-asyncrun"
 	use "rmolin88/pomodoro.vim"
-	use "nvim-treesitter/nvim-treesitter"
 	use "dracula/vim"
+	use "puremourning/vimspector"
 	-- LSP
 	use "neovim/nvim-lspconfig"
 	use "nvim-lua/lsp_extensions.nvim"
@@ -32,14 +32,17 @@ return require("packer").startup(function()
 	use "nvim-lua/popup.nvim"
 	use "nvim-lua/plenary.nvim"
 	use "nvim-telescope/telescope.nvim"
+	use "nvim-telescope/telescope-vimspector.nvim"
 	-- My plugins
 	use "wantyapps/vim-fountainpen"
 	-- use "wantyapps/WantyPlugin"
-	use {"wantyapps/WantyPlugin", branch = "dev"}
+	-- use {"wantyapps/WantyPlugin", branch = "dev"}
+	use {"~/Programming/WantyPlugin", branch = "dev"}
 	-- Secret writing
 	use "ernstwi/vim-secret"
 	-- TJ!!!
 	use "tjdevries/nlua.nvim"
+	use "tjdevries/cyclist.vim"
 	-- Lightline
 	use "kamwitsta/nordisk"
 	-- Buffer hiding-kinda
@@ -50,4 +53,6 @@ return require("packer").startup(function()
 	use "sharksforarms/vim-rust"
 	-- Lazygit
 	use "kdheepak/lazygit.nvim"
+	--
+	use "teto/vim-listchars"
 end)

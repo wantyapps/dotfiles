@@ -1,5 +1,5 @@
 GOPATH=/Users/uriarev/go/
-export EDITOR=nvim
+# export EDITOR=nvim
 alias ls="exa -l"
 alias gd="git diff"
 alias la="ls -a"
