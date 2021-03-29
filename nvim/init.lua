@@ -17,4 +17,5 @@ vim.g.colors_name = "gruvbox"
 --[[
 Telescope.nvim config
 ]]
+vim.cmd("autocmd colorscheme * lua require'nvim-web-devicons'.setup()") -- For devicons
 require('telescope.telescope_init')

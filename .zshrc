@@ -28,7 +28,6 @@ setopt prompt_subst
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval $(thefuck --alias)
 export LC_ALL=en_US.UTF-8
-export LANG=en_IN.UTF-8
 source /usr/local/opt/gitstatus/gitstatus.prompt.zsh
 # PROMPT=$'%F{31}%n%F{15}@%F{64}%m:%F{184}%~%F{15}<$GITSTATUS_PROMPT>|<$?>$ %F{15}'
 set -o vi

@@ -16,11 +16,11 @@ return require("packer").startup(function()
 	use "morhetz/gruvbox"
 	use "spolu/dwm.vim"
 	-- Lightline (statusline)
-	use "itchyny/lightline.vim"
+	-- use "itchyny/lightline.vim"
 	use "sainnhe/artify.vim"
 	use "itchyny/vim-gitbranch"
-	use "macthecadillac/lightline-gitdiff"
-	use "albertomontesg/lightline-asyncrun"
+	-- use "macthecadillac/lightline-gitdiff"
+	-- use "albertomontesg/lightline-asyncrun"
 	use "rmolin88/pomodoro.vim"
 	use "dracula/vim"
 	use "puremourning/vimspector"
@@ -43,8 +43,9 @@ return require("packer").startup(function()
 	-- TJ!!!
 	use "tjdevries/nlua.nvim"
 	use "tjdevries/cyclist.vim"
+	use "tjdevries/express_line.nvim"
 	-- Lightline
-	use "kamwitsta/nordisk"
+	-- use "kamwitsta/nordisk"
 	-- Buffer hiding-kinda
 	use "TaDaa/vimade"
 	-- Buffer complete
@@ -55,4 +56,6 @@ return require("packer").startup(function()
 	use "kdheepak/lazygit.nvim"
 	--
 	use "teto/vim-listchars"
+	-- Startify
+	use "mhinz/vim-startify"
 end)
