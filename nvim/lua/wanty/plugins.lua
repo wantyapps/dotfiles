@@ -1,20 +1,24 @@
 vim.cmd("packadd packer.nvim")
 
 return require("packer").startup(function()
+	use {
+	  'lewis6991/gitsigns.nvim',
+	}
 	use {"wbthomason/packer.nvim", opt = true}
-
+	use "sainnhe/vim-color-forest-night"
+	use "chriskempson/base16-vim"
 	use "tpope/vim-commentary"
 	use "tpope/vim-dispatch"
-	use "tpope/vim-fugitive"
 	use "ap/vim-css-color"
 	use "voldikss/vim-floaterm"
-	use "airblade/vim-gitgutter"
+	-- use "airblade/vim-gitgutter"
 	use "arcticicestudio/nord-vim"
-	use "kyazdani42/nvim-web-devicons"
 	use "gkeep/iceberg-dark"
 	use "cocopon/iceberg.vim"
-	use "morhetz/gruvbox"
 	use "spolu/dwm.vim"
+	use "kyazdani42/nvim-web-devicons"
+	use "morhetz/gruvbox"
+	use "wantyapps/onedark.nvim"
 	-- Lightline (statusline)
 	-- use "itchyny/lightline.vim"
 	use "sainnhe/artify.vim"
@@ -28,11 +32,12 @@ return require("packer").startup(function()
 	use "neovim/nvim-lspconfig"
 	use "nvim-lua/lsp_extensions.nvim"
 	use "nvim-lua/completion-nvim"
+	use "nvim-lua/lsp-status.nvim"
 	-- Telescope.nvim
 	use "nvim-lua/popup.nvim"
 	use "nvim-lua/plenary.nvim"
-	use "nvim-telescope/telescope.nvim"
-	use "nvim-telescope/telescope-vimspector.nvim"
+	-- use "nvim-telescope/telescope.nvim"
+	-- use "nvim-telescope/telescope-vimspector.nvim"
 	-- My plugins
 	use "wantyapps/vim-fountainpen"
 	-- use "wantyapps/WantyPlugin"
@@ -42,7 +47,6 @@ return require("packer").startup(function()
 	use "ernstwi/vim-secret"
 	-- TJ!!!
 	use "tjdevries/nlua.nvim"
-	use "tjdevries/cyclist.vim"
 	use "tjdevries/express_line.nvim"
 	-- Lightline
 	-- use "kamwitsta/nordisk"
@@ -56,6 +60,8 @@ return require("packer").startup(function()
 	use "kdheepak/lazygit.nvim"
 	--
 	use "teto/vim-listchars"
-	-- Startify
-	use "mhinz/vim-startify"
+	--
+	use "nvim-treesitter/nvim-treesitter"
+	--
+	use "axvr/photon.vim"
 end)

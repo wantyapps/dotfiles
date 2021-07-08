@@ -12,10 +12,11 @@ require('wanty.plugins')
 --[[
 Setting colorscheme in lua, similar to `vim.cmd("colorscheme gruvbox")`
 ]]
-vim.g.colors_name = "gruvbox"
+vim.g.colors_name = "onedark"
 
 --[[
 Telescope.nvim config
 ]]
 vim.cmd("autocmd colorscheme * lua require'nvim-web-devicons'.setup()") -- For devicons
+
 require('telescope.telescope_init')

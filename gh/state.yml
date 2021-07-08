@@ -1,5 +1,5 @@
-checked_for_update_at: 2021-03-26T21:39:54.912651+03:00
+checked_for_update_at: 2021-07-08T17:56:21.009908+03:00
 latest_release:
-    version: v1.7.0
-    url: https://github.com/cli/cli/releases/tag/v1.7.0
-    publishedat: 2021-03-04T18:14:38Z
+    version: v1.12.1
+    url: https://github.com/cli/cli/releases/tag/v1.12.1
+    publishedat: 2021-07-01T01:38:43Z

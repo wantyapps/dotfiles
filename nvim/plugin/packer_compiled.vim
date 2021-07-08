@@ -40,6 +40,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/artify.vim"
   },
+  ["base16-vim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/base16-vim"
+  },
   ["completion-buffers"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/completion-buffers"
@@ -51,6 +55,10 @@ _G.packer_plugins = {
   ["dwm.vim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/dwm.vim"
+  },
+  ["express_line.nvim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/express_line.nvim"
   },
   gruvbox = {
     loaded = true,
@@ -68,17 +76,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
   },
-  ["lightline-asyncrun"] = {
+  ["lsp-status.nvim"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lightline-asyncrun"
-  },
-  ["lightline-gitdiff"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lightline-gitdiff"
-  },
-  ["lightline.vim"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lightline.vim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lsp-status.nvim"
   },
   ["lsp_extensions.nvim"] = {
     loaded = true,
@@ -92,22 +92,30 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nord-vim"
   },
-  nordisk = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nordisk"
-  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/onedark.nvim"
+  },
   ["packer.nvim"] = {
     loaded = false,
     needs_bufread = false,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+  },
+  ["photon.vim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/photon.vim"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -121,6 +129,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
+  ["telescope-vimspector.nvim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/telescope-vimspector.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/telescope.nvim"
@@ -128,6 +140,10 @@ _G.packer_plugins = {
   vim = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim"
+  },
+  ["vim-color-forest-night"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-color-forest-night"
   },
   ["vim-commentary"] = {
     loaded = true,
@@ -149,10 +165,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-fountainpen"
   },
-  ["vim-fugitive"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-fugitive"
-  },
   ["vim-gitbranch"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-gitbranch"
@@ -160,6 +172,10 @@ _G.packer_plugins = {
   ["vim-gitgutter"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
+  },
+  ["vim-listchars"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-listchars"
   },
   ["vim-rust"] = {
     loaded = true,
@@ -172,6 +188,10 @@ _G.packer_plugins = {
   vimade = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vimade"
+  },
+  vimspector = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vimspector"
   }
 }
 

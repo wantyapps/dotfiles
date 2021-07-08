@@ -19,17 +19,19 @@ opt.termguicolors      = true
 g.netrw_dirhistmax     = 0
 wopt.signcolumn        = "yes"
 opt.pumblend           = 10
+opt.mouse	       = "a"
 -- }}}
 
 -- Keymapping Stuff {{{
 local options = { noremap = true }
-map('n', '<leader>ff', '<cmd>Telescope file_browser<cr>', options)
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', options)
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', options)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', options)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', options)
 map('n', '<leader>fc', '<cmd>Telescope commands<cr>', options)
 map('n', '<leader>fcs', '<cmd>Telescope colorscheme<cr>', options)
 map('n', '<leader>fbi', '<cmd>Telescope builtin<cr>', options)
+map('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>', options)
 map('n', '<leader>gg',  '<cmd>LazyGit<cr>', options)
 -- Floaterm keymap
 map('n', '<leader>,', '<cmd>FloatermNew<cr>', options)
@@ -42,6 +44,7 @@ map('n', '<leader>tr', '<cmd>tabl<cr>', options)
 --}}}
 
 -- Plugin Config {{{
+
 -- Completion Config {{{
 -- Mappings in vim, inoremap was complicated
 vim.cmd('inoremap <expr> <Tab>   pumvisible() ? "\\<C-n>" : "\\<Tab>"')
@@ -52,7 +55,7 @@ vim.cmd('autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif')
 -- }}}
 
 -- ExpressLine Config {{{
-
+vim.cmd [[packadd express_line.nvim]]
 local builtin = require('el.builtin')
 local extensions = require('el.extensions')
 local sections = require('el.sections')
@@ -95,34 +98,36 @@ local git_changes = subscribe.buf_autocmd(
   end
 )
 
-local ws_diagnostic_counts = function(_, buffer)
-  if not has_lsp_extensions then
-    return ''
-  end
+-- local function lsp_diagnostics(window, buffer)
+--   if not buffer.lsp then return '' end
 
-  local messages = {}
+--   local level_indicator = {
+--     Error = 'E',
+--     Warning = 'W',
+--     Information = 'I',
+--     Hint = 'H'
+--   }
+--   local diagnostics_str = ''
 
-  local error_count = ws_diagnostics.get_count(buffer.bufnr, "Error")
+--   for level, indicator in pairs(level_indicator) do
+--       local count = vim.lsp.diagnostic.get_count(buffer.bufnr, level)
+--       if count > 0 then
+--         diagnostics_str = diagnostics_str .. indicator .. ' ' .. count .. ' '
+--       end
+--   end
 
-  local x = "⬤"
-  if error_count == 0 then
-    -- pass
-  elseif error_count < 5 then
-    table.insert(messages, string.format('%s#%s#%s%%*', '%', "StatuslineError" .. error_count, x))
-  else
-    table.insert(messages, string.format('%s#%s#%s%%*', '%', "StatuslineError5", x))
-  end
+--   if #diagnostics_str > 0 then return '[ ' .. diagnostics_str .. ']' end
 
-  return table.concat(messages, "")
-end
+--   return ''
+-- end
 
-local show_current_func = function(window, buffer)
-  if buffer.filetype == 'lua' then
-    return ''
-  end
+-- local show_current_func = function(window, buffer)
+--   if buffer.filetype == 'lua' then
+--     return ''
+--   end
 
-  return lsp_statusline.current_function(window, buffer)
-end
+--   return lsp_statusline.current_function(window, vim.api.nvim_win_get_buf())
+-- end
 
 require('el').setup {
   generator = function(_, _)
@@ -143,9 +148,8 @@ require('el').setup {
         builtin.modified_flag
       },
       sections.split,
-      show_current_func,
+      lsp_statusline.current_function,
       lsp_statusline.server_progress,
-      ws_diagnostic_counts,
       git_changes,
       '[', builtin.line_with_width(3), ':',  builtin.column_with_width(2), ']',
       sections.collapse_builtin {
@@ -170,10 +174,59 @@ vim.g.completion_chain_complete_list = {
     { complete_items = { 'lsp' } },
     { complete_items = { 'buffers' } },
     { complete_items = { 'snippet' } },
-    { mode = { '<c-p>' } },
-    { mode = { '<c-n>' } }
+    { mode = { '<expr> <Tab>' } },
+    { mode = { '<expr> <Tab>' } }
   },
 }
+-- }}}
+
+-- Gitsigns Confg {{{
+require('gitsigns').setup {
+  signs = {
+    add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  },
+  numhl = false,
+  linehl = false,
+  keymaps = {
+    -- Default keymap options
+    noremap = true,
+    buffer = true,
+
+    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
+    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
+
+    ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+    ['v <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+    ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+    ['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+    ['v <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+    ['n <leader>hR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
+    ['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+    ['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
+
+    -- Text objects
+    ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
+  },
+  watch_index = {
+    interval = 1000,
+    follow_files = true
+  },
+  current_line_blame = true,
+  current_line_blame_delay = 1000,
+  current_line_blame_position = 'eol',
+  sign_priority = 6,
+  update_debounce = 100,
+  status_formatter = nil, -- Use default
+  word_diff = false,
+  use_decoration_api = true,
+  use_internal_diff = true,  -- If luajit is present
+}
+-- }}}
 
 -- LSP Config {{{
 -- Again, still learning how to set things in lua
