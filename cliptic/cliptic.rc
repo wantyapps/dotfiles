@@ -1,0 +1,24 @@
+//Colour Settings
+hi box 8
+hi grid 8
+hi bar 16
+hi logo_grid 8
+hi logo_text 1
+hi title 3
+hi stats 2
+hi active_num 3
+hi num 8
+hi block 8
+hi I 15
+hi N 12
+hi correct 2
+hi incorrect 1
+hi meta 3
+hi cluebox 8
+
+
+//Interface Settings
+set auto_advance 1
+set auto_mark 1
+set auto_save 1
+
