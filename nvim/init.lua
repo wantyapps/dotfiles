@@ -17,6 +17,6 @@ vim.g.colors_name = "onedark"
 --[[
 Telescope.nvim config
 ]]
-vim.cmd("autocmd colorscheme * lua require'nvim-web-devicons'.setup()") -- For devicons
+--vim.cmd("autocmd colorscheme * lua require'nvim-web-devicons'.setup()") -- For devicons
 
-require('telescope.telescope_init')
+--require('telescope.telescope_init')
