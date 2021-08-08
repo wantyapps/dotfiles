@@ -26,10 +26,11 @@ HISTFILE=~/.cache/zsh/history
 
 autoload -U compinit
 zstyle ':completion:*' menu select
+zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
 setopt +o menucomplete
-bindkey '^[[Z' reverse-menu-complete
+bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 function zle-keymap-select () {
     case $KEYMAP in
