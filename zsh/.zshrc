@@ -58,6 +58,7 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 eval "$(starship init zsh)"
+eval $(thefuck --alias)
 
 export PATH="/Users/uriarev/.local/bin:$PATH"
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
