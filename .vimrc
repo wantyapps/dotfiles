@@ -1,6 +1,7 @@
 syntax on
 set spell
 set termguicolors
+set nu
 
 call plug#begin('~/.local/share/vim/plugins')
 	Plug 'sheerun/vim-polyglot'
@@ -9,6 +10,7 @@ call plug#begin('~/.local/share/vim/plugins')
 	"Plug 'pangloss/vim-javascript'
 	Plug 'tpope/vim-fugitive'
 	Plug 'morhetz/gruvbox'
+	Plug '~/Programming/simple.vim'
 call plug#end()
 
 colorscheme gruvbox

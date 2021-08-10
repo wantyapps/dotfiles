@@ -1,5 +1,5 @@
 release_it_github_token.txt
 gh/
 npm/
-zsh/zsh_history
-zsh/zsh_sessions/
+zsh/.zsh_history
+zsh/.zsh_sessions/
