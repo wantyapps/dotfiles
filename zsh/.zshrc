@@ -5,6 +5,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export GOPATH="/Users/uriarev/go"
 alias t="tmux"
+alias mutt="neomutt"
 alias tt="vim ~/.tmux.conf"
 alias ttt="tmux attach -t"
 alias e="exit"
@@ -53,7 +54,9 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 bindkey -v
 export KEYTIMEOUT=1
 
-bindkey -s '^o' 'cd ~\n'
+bindkey -s '^o' 'cd ~/\n'
+bindkey -s '^n' 'cd ~/Documents/LaTeX\n'
+bindkey -s '^t' 'cd ~/.config/\n'
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 

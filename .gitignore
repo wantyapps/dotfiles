@@ -4,3 +4,4 @@ npm/
 zsh/.zsh_history
 zsh/.zsh_sessions/
 thefuck/__pycache__/
+zsh/.zcompdump
