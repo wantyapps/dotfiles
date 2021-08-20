@@ -12,3 +12,6 @@ set postponed = "+Drafts"
 mailboxes =INBOX =Sent =Trash =Drafts =Junk
 
 source color.muttrc
+
+bind pager j next-line
+bind pager k previous-line
