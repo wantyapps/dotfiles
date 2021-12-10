@@ -1,0 +1,15 @@
+rls
+gopls
+ccls
+tsserver
+dockerls
+jedi_language_server
+vimls
+
+nlua
+require('nlua.lsp.nvim').setup(require('lspconfig'), {
+	on_attach = on_attach,
+	globals = {
+		"use",
+	},
+})

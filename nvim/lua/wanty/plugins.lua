@@ -1,69 +1,50 @@
-vim.cmd("packadd packer.nvim")
+vim.cmd('packadd packer.nvim')
 
-return require("packer").startup(function()
-	use {
-	  'lewis6991/gitsigns.nvim',
-	}
-	use {"wbthomason/packer.nvim", opt = true}
-	use "sainnhe/vim-color-forest-night"
-	use "chriskempson/base16-vim"
-	use "ishan9299/modus-theme-vim"
-	use "tpope/vim-commentary"
-	use "xuhdev/vim-latex-live-preview"
-	use "tpope/vim-dispatch"
-	use "ap/vim-css-color"
-	use "voldikss/vim-floaterm"
-	-- use "airblade/vim-gitgutter"
-	use "arcticicestudio/nord-vim"
-	use "gkeep/iceberg-dark"
-	use "cocopon/iceberg.vim"
-	use "spolu/dwm.vim"
-	use "kyazdani42/nvim-web-devicons"
-	use "morhetz/gruvbox"
-	use "wantyapps/onedark.nvim"
-	-- Lightline (statusline)
-	-- use "itchyny/lightline.vim"
-	use "sainnhe/artify.vim"
-	use "itchyny/vim-gitbranch"
-	-- use "macthecadillac/lightline-gitdiff"
-	-- use "albertomontesg/lightline-asyncrun"
-	use "rmolin88/pomodoro.vim"
-	use "dracula/vim"
-	use "puremourning/vimspector"
+return require('packer').startup(function()
+	use {'wbthomason/packer.nvim', opt = true}
+	use 'lewis6991/gitsigns.nvim'
+	use 'folke/tokyonight.nvim'
+	use 'tpope/vim-commentary'
+	use 'tpope/vim-dispatch'
+	use 'ap/vim-css-color'
+	use 'voldikss/vim-floaterm'
+	use 'kyazdani42/nvim-web-devicons'
+	use 'sainnhe/artify.vim'
+	use 'itchyny/vim-gitbranch'
+	use 'rmolin88/pomodoro.vim'
+	use 'dracula/vim'
+	use 'puremourning/vimspector'
+	use 'SirVer/ultisnips'
+	use 'quangnguyen30192/cmp-nvim-ultisnips'
 	-- LSP
-	use "neovim/nvim-lspconfig"
-	use "nvim-lua/lsp_extensions.nvim"
-	use "nvim-lua/completion-nvim"
-	use "nvim-lua/lsp-status.nvim"
+	use 'neovim/nvim-lspconfig'
+	use 'williamboman/nvim-lsp-installer'
+	use 'nvim-lua/lsp_extensions.nvim'
+	use {
+		'hrsh7th/nvim-cmp',
+		requires = {
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-cmdline',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-vsnip',
+			'hrsh7th/vim-vsnip',
+			'ray-x/cmp-treesitter',
+			'onsails/lspkind-nvim'
+		},
+	}
+	use 'nvim-lua/lsp-status.nvim'
 	-- Telescope.nvim
-	use "nvim-lua/popup.nvim"
-	use "nvim-lua/plenary.nvim"
-	-- use "nvim-telescope/telescope.nvim"
-	-- use "nvim-telescope/telescope-vimspector.nvim"
-	-- My plugins
-	use "wantyapps/vim-fountainpen"
-	-- use "wantyapps/WantyPlugin"
-	-- use {"wantyapps/WantyPlugin", branch = "dev"}
-	use {"~/Programming/WantyPlugin", branch = "dev"}
+	use 'nvim-lua/popup.nvim'
+	use 'nvim-lua/plenary.nvim'
+	use 'nvim-telescope/telescope.nvim'
+	use 'nvim-telescope/telescope-vimspector.nvim'
 	-- Secret writing
-	use "ernstwi/vim-secret"
+	use 'ernstwi/vim-secret'
 	-- TJ!!!
-	use "tjdevries/nlua.nvim"
-	use "tjdevries/express_line.nvim"
-	-- Lightline
-	-- use "kamwitsta/nordisk"
+	use 'tjdevries/nlua.nvim'
 	-- Buffer hiding-kinda
-	use "TaDaa/vimade"
-	-- Buffer complete
-	use "steelsojka/completion-buffers"
-	-- Rust
-	use "sharksforarms/vim-rust"
+	use 'TaDaa/vimade'
 	-- Lazygit
-	use "kdheepak/lazygit.nvim"
-	--
-	use "teto/vim-listchars"
-	--
-	use "nvim-treesitter/nvim-treesitter"
-	--
-	use "axvr/photon.vim"
+	use 'kdheepak/lazygit.nvim'
 end)

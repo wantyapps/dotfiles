@@ -1,5 +1,6 @@
 -- vim:fileencoding=utf-8:ft=lua:foldmethod=marker
 local opt = vim.o
+
 local wopt = vim.wo
 local bopt = vim.bo
 local map = vim.api.nvim_set_keymap
@@ -50,138 +51,6 @@ map('n', '<leader>tr', '<cmd>tabl<cr>', options)
 vim.cmd('inoremap <expr> <Tab>   pumvisible() ? "\\<C-n>" : "\\<Tab>"')
 vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\\<C-p>" : "\\<S-Tab>"')
 
--- Some more things I don't know how to set in lua
-vim.cmd('autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif')
--- }}}
-
--- ExpressLine Config {{{
-vim.cmd [[packadd express_line.nvim]]
-local builtin = require('el.builtin')
-local extensions = require('el.extensions')
-local sections = require('el.sections')
-local subscribe = require('el.subscribe')
-local lsp_statusline = require('el.plugins.lsp_status')
-local helper = require('el.helper')
-
-local has_lsp_extensions, ws_diagnostics = pcall(require, 'lsp_extensions.workspace.diagnostic')
-
--- TODO: Spinning planet extension. Integrated w/ telescope.
--- ◐ ◓ ◑ ◒
--- 🌛︎🌝︎🌜︎🌚︎
--- Show telescope icon / emoji when you open it as well
-
-local git_icon = subscribe.buf_autocmd("el_file_icon", "BufRead", function(_, bufnr)
-  local icon = extensions.file_icon(_, bufnr)
-  if icon then
-    return icon .. ' '
-  end
-
-  return ''
-end)
-
-local git_branch = subscribe.buf_autocmd(
-  "el_git_branch",
-  "BufEnter",
-  function(window, buffer)
-    local branch = extensions.git_branch(window, buffer)
-    if branch then
-      return ' ' .. extensions.git_icon() .. ' ' .. branch
-    end
-  end
-)
-
-local git_changes = subscribe.buf_autocmd(
-  "el_git_changes",
-  "BufWritePost",
-  function(window, buffer)
-    return extensions.git_changes(window, buffer)
-  end
-)
-
--- local function lsp_diagnostics(window, buffer)
---   if not buffer.lsp then return '' end
-
---   local level_indicator = {
---     Error = 'E',
---     Warning = 'W',
---     Information = 'I',
---     Hint = 'H'
---   }
---   local diagnostics_str = ''
-
---   for level, indicator in pairs(level_indicator) do
---       local count = vim.lsp.diagnostic.get_count(buffer.bufnr, level)
---       if count > 0 then
---         diagnostics_str = diagnostics_str .. indicator .. ' ' .. count .. ' '
---       end
---   end
-
---   if #diagnostics_str > 0 then return '[ ' .. diagnostics_str .. ']' end
-
---   return ''
--- end
-
--- local show_current_func = function(window, buffer)
---   if buffer.filetype == 'lua' then
---     return ''
---   end
-
---   return lsp_statusline.current_function(window, vim.api.nvim_win_get_buf())
--- end
-
-require('el').setup {
-  generator = function(_, _)
-    return {
-      extensions.gen_mode {
-        format_string = ' %s '
-      },
-      git_branch,
-      ' ',
-      sections.split,
-      git_icon,
-      sections.maximum_width(
-        builtin.responsive_file(140, 90),
-        0.30
-      ),
-      sections.collapse_builtin {
-        ' ',
-        builtin.modified_flag
-      },
-      sections.split,
-      lsp_statusline.current_function,
-      lsp_statusline.server_progress,
-      git_changes,
-      '[', builtin.line_with_width(3), ':',  builtin.column_with_width(2), ']',
-      sections.collapse_builtin {
-        '[',
-        builtin.help_list,
-        builtin.readonly_list,
-        ']',
-      },
-      builtin.filetype,
-    }
-  end
-}
--- }}}
-
--- Lightline Config {{{
-vim.cmd("let g:lightline = {'colorscheme': 'gruvbox',}")
--- }}}
-
--- Buffer Completion Config {{{
-vim.g.completion_chain_complete_list = {
-  default = {
-    { complete_items = { 'lsp' } },
-    { complete_items = { 'buffers' } },
-    { complete_items = { 'snippet' } },
-    { mode = { '<expr> <Tab>' } },
-    { mode = { '<expr> <Tab>' } }
-  },
-}
--- }}}
-
--- Latex Live Preview Config {{{
-vim.g.livepreview_previewer = 'open -a Preview'
 -- }}}
 
 -- Gitsigns Confg {{{
@@ -238,139 +107,68 @@ vim.cmd('set completeopt=menuone,noinsert,noselect')
 vim.cmd('set shortmess+=c')
 
 -- LSP server configuration
+local cmp = require'cmp'
 
--- Rust
-local nvim_lsp = require'lspconfig'
-
-local on_attach = function(client)
-    require'completion'.on_attach(client)
-end
-
-nvim_lsp.rls.setup({ on_attach=on_attach })
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = true,
-    signs = true,
-    update_in_insert = true,
-  }
-)
-
--- Go
-local nvim_lsp = require'lspconfig'
-
-local on_attach = function(client)
-	require'completion'.on_attach(client)
-end
-
-nvim_lsp.gopls.setup({ on_attach=on_attach })
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-	vim.lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = true,
-		signs = true,
-		update_in_insert = true,
-	}
-)
-
--- C/C++
-local nvim_lsp = require'lspconfig'
-
-local on_attach = function(client)
-	require'completion'.on_attach(client)
-end
-
-nvim_lsp.ccls.setup({ on_attach=on_attach })
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-	vim.lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = true,
-		signs = true,
-		update_in_insert = true,
-	}
-)
-
--- JS
-local nvim_lsp = require'lspconfig'
-
-local on_attach = function(client)
-	require'completion'.on_attach(client)
-end
-
-nvim_lsp.tsserver.setup({ on_attach=on_attach })
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-	vim.lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = true,
-		signs = true,
-		update_in_insert = true,
-	}
-)
-
--- Docker
-local nvim_lsp = require'lspconfig'
-
-local on_attach = function(client)
-	require'completion'.on_attach(client)
-end
-
-nvim_lsp.dockerls.setup({ on_attach=on_attach })
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-	vim.lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = true,
-		signs = true,
-		update_in_insert = true,
-	}
-)
-
--- Python
-local nvim_lsp = require'lspconfig'
-
-local on_attach = function(client)
-	require'completion'.on_attach(client)
-end
-
-nvim_lsp.jedi_language_server.setup({ on_attach=on_attach })
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-	vim.lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = true,
-		signs = true,
-		update_in_insert = true,
-	}
-)
-
--- Vimscript
-local nvim_lsp = require'lspconfig'
-
-local on_attach = function(client)
-	require'completion'.on_attach(client)
-end
-
-nvim_lsp.vimls.setup({ on_attach=on_attach })
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-	vim.lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = true,
-		signs = true,
-		update_in_insert = true,
-	}
-)
-
--- Lua
-local nvim_lsp = require'lspconfig'
-
-local on_attach = function(client)
-	require'completion'.on_attach(client)
-end
-
--- require('nlua.lsp.nvim').setup({ on_attach=on_attach })
-
-require('nlua.lsp.nvim').setup(require('lspconfig'), {
-	on_attach = on_attach,
-	globals = {
-		"use",
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			vim.fn["UltiSnips#Anon"](args.body)
+		end,
 	},
+	mapping = {
+		['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+		['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+		['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+		['<C-e>'] = cmp.mapping({
+			i = cmp.mapping.abort(),
+			c = cmp.mapping.close()
+		}),
+		['<CR>'] = cmp.mapping.confirm({ select = true }),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif has_words_before() then
+				cmp.complete()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+
+		["<S-Tab>"] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.select_prev_item()
+			end
+		end, { "i", "s" }),
+	},
+	sources = cmp.config.sources({
+		{ name = 'nvim_lsp' },
+		{ name = 'ultisnips' },
+	}, {
+		{ name = 'buffer' },
+	})
 })
+
+cmp.setup.cmdline('/', {
+	sources = {
+		{ name = 'buffer' }
+	}
+})
+
+cmp.setup.cmdline(':', {
+	sources = cmp.config.sources({
+		{ name = 'path' }
+	}, {
+		{ name = 'cmdline' }
+	})
+})
+
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+require'lspconfig'.gopls.setup{capabilities = capabilities}
+require'lspconfig'.ccls.setup{capabilities = capabilities}
+require'lspconfig'.tsserver.setup{capabilities = capabilities}
+require'lspconfig'.dockerls.setup{capabilities = capabilities}
+require'lspconfig'.jedi_language_server.setup{capabilities = capabilities}
+require'lspconfig'.vimls.setup{capabilities = capabilities}
 -- }}}

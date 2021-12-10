@@ -1,22 +1,25 @@
-# Wow. My ZSH Config.
-
-export EDITOR="vim"
+export EDITOR="nvim"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+source $HOME/.cargo/env
 export GOPATH="/Users/uriarev/go"
 export GITHUB_TOKEN="$(cat ~/.config/release_it_github_token.txt)"
+export MANPAGER="col -b | nvim -c 'set ft=man nomod nolist ignorecase' -"
 alias t="tmux"
 alias mutt="neomutt"
-alias tt="vim ~/.tmux.conf"
+alias tt="nvim ~/.tmux.conf"
 alias ttt="tmux attach -t"
 alias e="exit"
+alias qrcode="echo \"Never gonna give you up, never gonna let you down.\" | curl -d @/dev/stdin qrcode.show"
 alias jest="jest --verbose"
-alias ls="exa -l"
-alias vv="vim"
+alias ls="ls -G"
+alias snek="nsnake"
+alias vv="nvim"
+alias vim="nvim"
 alias V="vifm"
 alias so="source ~/.config/zsh/.zshrc"
-alias zsr="vim ~/.config/zsh/.zshrc"
-alias iv="vim ~/.vimrc"
+alias zsr="nvim ~/.config/zsh/.zshrc"
+alias iv="nvim ~/.config/nvim/init.lua"
 alias g="git"
 alias gc="git commit"
 alias gp="git push"
@@ -24,7 +27,8 @@ alias ga="git add"
 alias gs="git status"
 alias gd="git diff"
 alias gss="git status -s"
-#alias cat="bat"
+alias rr="curl -L http://bit.ly/10hA8iC | bash"
+alias ips="arp -a | awk '{print \$2 \" \" \$4}' | tr -d '()'"
 
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -38,32 +42,39 @@ _comp_options+=(globdots)
 setopt +o menucomplete
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
-#function zle-keymap-select () {
-#    case $KEYMAP in
-#        vicmd) echo -ne '\e[1 q';;
-#        viins|main) echo -ne '\e[5 q';;
-#    esac
-#}
-#zle -N zle-keymap-select
-#zle-line-init() {
-#    zle -K viins
-#    echo -ne "\e[5 q"
-#}
-#zle -N zle-line-init
-#echo -ne '\e[5 q'
-#preexec() { echo -ne '\e[5 q' ;}
-
 bindkey -v
 export KEYTIMEOUT=1
 
-bindkey -s '^o' 'cd ~/\n'
 bindkey -s '^n' 'cd ~/Documents/LaTeX\n'
 bindkey -s '^t' 'cd ~/.config/\n'
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-eval "$(starship init zsh)"
 eval $(thefuck --alias)
 
-export PATH="/Users/uriarev/.local/bin:$PATH"
-source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+export PATH="/Users/uriarev/.local/bin:/opt/metasploit-framework/bin:$PATH"
+
+if command -v theme.sh > /dev/null; then
+	[ -e ~/.theme_history ] && theme.sh "$(theme.sh -l|tail -n1)"
+
+	# Optional
+
+	# Bind C-o to the last theme.
+	last_theme() {
+		theme.sh "$(theme.sh -l|tail -n2|head -n1)"
+	}
+
+	zle -N last_theme
+	bindkey '^O' last_theme
+
+	alias th='theme.sh -i'
+
+	# Interactively load a light theme
+	alias thl='theme.sh --light -i'
+
+	# Interactively load a dark theme
+	alias thd='theme.sh --dark -i'
+fi
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+PROMPT="%n %F{red}::%f %F{10}%~%f %F{blue}»%f "

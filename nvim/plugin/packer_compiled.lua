@@ -57,7 +57,7 @@ end
 time([[Luarocks path setup]], false)
 time([[try_loadstring definition]], true)
 local function try_loadstring(s, component, name)
-  local success, result = pcall(loadstring(s))
+  local success, result = pcall(loadstring(s), name, _G.packer_plugins[name])
   if not success then
     vim.schedule(function()
       vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
@@ -69,162 +69,176 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  WantyPlugin = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/WantyPlugin"
-  },
   ["artify.vim"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/artify.vim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/artify.vim",
+    url = "https://github.com/sainnhe/artify.vim"
   },
-  ["base16-vim"] = {
+  ["cmp-buffer"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/base16-vim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
   },
-  ["completion-buffers"] = {
+  ["cmp-cmdline"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/completion-buffers"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
   },
-  ["completion-nvim"] = {
+  ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/completion-nvim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  ["dwm.vim"] = {
+  ["cmp-path"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/dwm.vim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
   },
-  ["express_line.nvim"] = {
+  ["cmp-treesitter"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/express_line.nvim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/cmp-treesitter",
+    url = "https://github.com/ray-x/cmp-treesitter"
+  },
+  ["cmp-vsnip"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
+    url = "https://github.com/hrsh7th/cmp-vsnip"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
-  },
-  gruvbox = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/gruvbox"
-  },
-  ["iceberg-dark"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/iceberg-dark"
-  },
-  ["iceberg.vim"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/iceberg.vim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["lazygit.nvim"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
   },
   ["lsp-status.nvim"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lsp-status.nvim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lsp-status.nvim",
+    url = "https://github.com/nvim-lua/lsp-status.nvim"
   },
   ["lsp_extensions.nvim"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lsp_extensions.nvim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lsp_extensions.nvim",
+    url = "https://github.com/nvim-lua/lsp_extensions.nvim"
+  },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
+    url = "https://github.com/onsails/lspkind-nvim"
   },
   ["nlua.nvim"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nlua.nvim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nlua.nvim",
+    url = "https://github.com/tjdevries/nlua.nvim"
   },
-  ["nord-vim"] = {
+  ["nvim-cmp"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nord-vim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-lsp-installer"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
+    url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
-  },
-  ["nvim-treesitter"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
-  },
-  ["onedark.nvim"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/onedark.nvim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/opt/packer.nvim"
-  },
-  ["photon.vim"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/photon.vim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/opt/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["pomodoro.vim"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/pomodoro.vim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/pomodoro.vim",
+    url = "https://github.com/rmolin88/pomodoro.vim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    url = "https://github.com/nvim-lua/popup.nvim"
+  },
+  ["telescope-vimspector.nvim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/telescope-vimspector.nvim",
+    url = "https://github.com/nvim-telescope/telescope-vimspector.nvim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   vim = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim"
-  },
-  ["vim-color-forest-night"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-color-forest-night"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim",
+    url = "https://github.com/dracula/vim"
   },
   ["vim-commentary"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-commentary"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-commentary",
+    url = "https://github.com/tpope/vim-commentary"
   },
   ["vim-css-color"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-css-color"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-css-color",
+    url = "https://github.com/ap/vim-css-color"
   },
   ["vim-dispatch"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-dispatch"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-dispatch",
+    url = "https://github.com/tpope/vim-dispatch"
   },
   ["vim-floaterm"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-floaterm"
-  },
-  ["vim-fountainpen"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-fountainpen"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-floaterm",
+    url = "https://github.com/voldikss/vim-floaterm"
   },
   ["vim-gitbranch"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-gitbranch"
-  },
-  ["vim-latex-live-preview"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-latex-live-preview"
-  },
-  ["vim-listchars"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-listchars"
-  },
-  ["vim-rust"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-rust"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-gitbranch",
+    url = "https://github.com/itchyny/vim-gitbranch"
   },
   ["vim-secret"] = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-secret"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-secret",
+    url = "https://github.com/ernstwi/vim-secret"
+  },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-vsnip",
+    url = "https://github.com/hrsh7th/vim-vsnip"
   },
   vimade = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vimade"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vimade",
+    url = "https://github.com/TaDaa/vimade"
   },
   vimspector = {
     loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vimspector"
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vimspector",
+    url = "https://github.com/puremourning/vimspector"
   }
 }
 
