@@ -13,13 +13,20 @@ return require('packer').startup(function()
 	use 'itchyny/vim-gitbranch'
 	use 'rmolin88/pomodoro.vim'
 	use 'dracula/vim'
+	use 'skywind3000/asyncrun.vim'
 	use 'puremourning/vimspector'
+	use 'kosayoda/nvim-lightbulb'
 	use 'SirVer/ultisnips'
 	use 'quangnguyen30192/cmp-nvim-ultisnips'
 	-- LSP
 	use 'neovim/nvim-lspconfig'
 	use 'williamboman/nvim-lsp-installer'
 	use 'nvim-lua/lsp_extensions.nvim'
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate'
+	}
+	use 'nvim-treesitter/playground'
 	use {
 		'hrsh7th/nvim-cmp',
 		requires = {
@@ -39,6 +46,8 @@ return require('packer').startup(function()
 	use 'nvim-lua/plenary.nvim'
 	use 'nvim-telescope/telescope.nvim'
 	use 'nvim-telescope/telescope-vimspector.nvim'
+	-- Lightline
+	use 'itchyny/lightline.vim'
 	-- Secret writing
 	use 'ernstwi/vim-secret'
 	-- TJ!!!
@@ -47,4 +56,6 @@ return require('packer').startup(function()
 	use 'TaDaa/vimade'
 	-- Lazygit
 	use 'kdheepak/lazygit.nvim'
+	-- BLACK
+	use 'metalelf0/base16-black-metal-scheme'
 end)
