@@ -13,4 +13,7 @@ require('wanty.plugins')
 require('telescope.telescope_init')
 
 -- Setting the colorscheme
-vim.cmd('colorscheme tokyonight')
+vim.cmd('colorscheme catppuccin')
+
+-- GOYO
+vim.cmd('autocmd vimenter *.md Goyo')

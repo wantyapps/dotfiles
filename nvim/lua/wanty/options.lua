@@ -30,6 +30,8 @@ map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', options)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', options)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', options)
 map('n', '<leader>fc', '<cmd>Telescope commands<cr>', options)
+map('n', '<leader>z', '<cmd>ZenMode<cr>', options)
+map('n', '<leader>g', '<cmd>Goyo<cr>', options)
 map('n', '<leader>fcs', '<cmd>Telescope colorscheme<cr>', options)
 map('n', '<leader>fbi', '<cmd>Telescope builtin<cr>', options)
 map('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>', options)
@@ -57,10 +59,10 @@ vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\\<C-p>" : "\\<S-Tab>"')
 -- }}}
 
 -- Lightline Config {{{
-vim.cmd("let g:lightline = {'colorscheme': 'tokyonight'}")
+vim.cmd("let g:lightline = {'colorscheme': 'catppuccin'}")
 -- }}}
 
---- LSP Lightbulb {{{
+-- LSP Lightbulb {{{
 require'nvim-lightbulb'.update_lightbulb {
     -- LSP client names to ignore
     -- Example: {"sumneko_lua", "null-ls"}

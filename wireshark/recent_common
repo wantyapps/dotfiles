@@ -21,10 +21,10 @@ recent.display_filter: whois
 
 # Main window geometry.
 # Decimal numbers.
-gui.geometry_main_x: 240
-gui.geometry_main_y: 51
-gui.geometry_main_width: 960
-gui.geometry_main_height: 768
+gui.geometry_main_x: 725
+gui.geometry_main_y: 50
+gui.geometry_main_width: 703
+gui.geometry_main_height: 810
 
 # Main window maximized.
 # TRUE or FALSE (case-insensitive).

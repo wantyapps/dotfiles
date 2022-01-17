@@ -4,6 +4,7 @@ return require('packer').startup(function()
 	use {'wbthomason/packer.nvim', opt = true}
 	use 'lewis6991/gitsigns.nvim'
 	use 'folke/tokyonight.nvim'
+	use 'folke/zen-mode.nvim'
 	use 'tpope/vim-commentary'
 	use 'tpope/vim-dispatch'
 	use 'ap/vim-css-color'
@@ -11,9 +12,12 @@ return require('packer').startup(function()
 	use 'kyazdani42/nvim-web-devicons'
 	use 'sainnhe/artify.vim'
 	use 'itchyny/vim-gitbranch'
+	use 'junegunn/goyo.vim'
 	use 'rmolin88/pomodoro.vim'
 	use 'dracula/vim'
 	use 'skywind3000/asyncrun.vim'
+	-- Discord Presence
+	use 'andweeb/presence.nvim'
 	use 'puremourning/vimspector'
 	use 'kosayoda/nvim-lightbulb'
 	use 'SirVer/ultisnips'
@@ -22,6 +26,10 @@ return require('packer').startup(function()
 	use 'neovim/nvim-lspconfig'
 	use 'williamboman/nvim-lsp-installer'
 	use 'nvim-lua/lsp_extensions.nvim'
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin"
+	})
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
@@ -52,8 +60,6 @@ return require('packer').startup(function()
 	use 'ernstwi/vim-secret'
 	-- TJ!!!
 	use 'tjdevries/nlua.nvim'
-	-- Buffer hiding-kinda
-	use 'TaDaa/vimade'
 	-- Lazygit
 	use 'kdheepak/lazygit.nvim'
 	-- BLACK
