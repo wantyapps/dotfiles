@@ -1,3 +1,6 @@
+fontforge/
+wireshark/
+glab-cli/
 release_it_github_token.txt
 gh/
 npm/

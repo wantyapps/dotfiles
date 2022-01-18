@@ -7,6 +7,7 @@ return require('packer').startup(function()
 	use 'folke/zen-mode.nvim'
 	use 'tpope/vim-commentary'
 	use 'tpope/vim-dispatch'
+	use 'tpope/vim-fugitive'
 	use 'ap/vim-css-color'
 	use 'voldikss/vim-floaterm'
 	use 'kyazdani42/nvim-web-devicons'
