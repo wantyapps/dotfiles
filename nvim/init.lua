@@ -1,5 +1,5 @@
 -- Setting the <leader> key
-vim.g.mapleader = ';'
+vim.g.mapleader = ','
 
 --[[
 --Loading options (for example 'set nu' in Vimscript) from a file

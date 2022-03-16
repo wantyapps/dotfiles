@@ -16,3 +16,4 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 alt - return : kitty ~
 
 alt - r : brew services restart yabai
+alt - z : zathura

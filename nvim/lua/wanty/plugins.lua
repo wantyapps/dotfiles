@@ -7,10 +7,19 @@ return require('packer').startup(function()
 	use 'folke/zen-mode.nvim'
 	use 'tpope/vim-commentary'
 	use 'tpope/vim-dispatch'
+	use 'morhetz/gruvbox'
 	use 'tpope/vim-fugitive'
+	use 'j-hui/fidget.nvim'
 	use 'ap/vim-css-color'
+	use 'liuchengxu/vista.vim'
 	use 'voldikss/vim-floaterm'
 	use 'kyazdani42/nvim-web-devicons'
+	use {
+		'VonHeikemen/fine-cmdline.nvim',
+		requires = {
+			{'MunifTanjim/nui.nvim'}
+		}
+	}
 	use 'sainnhe/artify.vim'
 	use 'itchyny/vim-gitbranch'
 	use 'junegunn/goyo.vim'

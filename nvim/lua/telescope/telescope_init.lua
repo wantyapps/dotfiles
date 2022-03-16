@@ -1,10 +1,11 @@
+local actions = require "telescope.actions"
 require('telescope').setup{
 	defaults = {
 		prompt_position = "bottom",
 		prompt_prefix = "> ",
 		selection_caret = "> ",
 		entry_prefix = "  ",
-		initial_mode = "normal",
+		initial_mode = "insert",
 		layout_strategy = "horizontal",
 		layout_defaults = {
 			horizontal = {

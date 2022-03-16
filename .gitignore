@@ -14,3 +14,7 @@ vifm/vifminfo.json
 configstore/
 spotify-tui/
 marketstack_token.txt
+.zcompcache/
+bpytop/error.log
+zsh/.zcompdump*
+ncmpcpp/error.log

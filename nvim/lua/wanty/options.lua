@@ -36,9 +36,13 @@ map('n', '<leader>fcs', '<cmd>Telescope colorscheme<cr>', options)
 map('n', '<leader>fbi', '<cmd>Telescope builtin<cr>', options)
 map('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>', options)
 map('n', '<leader>fca', '<cmd>Telescope lsp_code_actions<cr>', options)
+map('n', '<leader>ft', '<cmd>Telescope treesitter<cr>', options)
 map('n', '<leader>gg',  '<cmd>LazyGit<cr>', options)
+map('n', '<leader>v', '<cmd>Vista nvim_lsp<cr>', options)
+map('n', '<leader>V', '<cmd>Vista!<cr>', options)
 map('n', '<C-k>', '<cmd>cnext<cr>zz', options)
 map('n', '<C-j>', '<cmd>cprev<cr>zz', options)
+-- map('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
 -- Floaterm keymap
 map('n', '<leader>,', '<cmd>FloatermNew<cr>', options)
 -- LSP hover and rename
@@ -59,7 +63,7 @@ vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\\<C-p>" : "\\<S-Tab>"')
 -- }}}
 
 -- Lightline Config {{{
-vim.cmd("let g:lightline = {'colorscheme': 'catppuccin'}")
+vim.cmd("let g:lightline = {'colorscheme': 'catppuccin', 'component_function': {'method': 'NearestMethodOrFunction'}}")
 -- }}}
 
 -- LSP Lightbulb {{{
@@ -232,6 +236,17 @@ cmp.setup.cmdline(':', {
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+require('nlua.lsp.nvim').setup(require('lspconfig'), {
+  -- Include globals you want to tell the LSP are real :)
+  globals = {
+    -- Colorbuddy
+    "Color", "c", "Group", "g", "s",
+  },
+  capabilities = capabilites
+})
+
+require"fidget".setup{}
+
 require'lspconfig'.gopls.setup{capabilities = capabilities}
 require'lspconfig'.ccls.setup{capabilities = capabilities}
 require'lspconfig'.tsserver.setup{capabilities = capabilities}
@@ -239,4 +254,8 @@ require'lspconfig'.dockerls.setup{capabilities = capabilities}
 require'lspconfig'.jedi_language_server.setup{capabilities = capabilities}
 require'lspconfig'.vimls.setup{capabilities = capabilities}
 require'lspconfig'.rust_analyzer.setup{capabilities = capabilities}
+require'lspconfig'.asm_lsp.setup{capabilities = capabilities}
+require'lspconfig'.ltex.setup{capabilities = capabilities}
+require'lspconfig'.jdtls.setup{capabilities = capabilities}
+require'lspconfig'.kotlin_language_server.setup{capabilities = capabilities}
 -- }}}
