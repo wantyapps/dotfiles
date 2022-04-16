@@ -7,6 +7,17 @@ return require('packer').startup(function()
 	use 'folke/zen-mode.nvim'
 	use 'tpope/vim-commentary'
 	use 'tpope/vim-dispatch'
+	use {
+		"folke/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("todo-comments").setup {
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			}
+		end
+	}
 	use 'morhetz/gruvbox'
 	use 'tpope/vim-fugitive'
 	use 'j-hui/fidget.nvim'
@@ -24,6 +35,7 @@ return require('packer').startup(function()
 	use 'itchyny/vim-gitbranch'
 	use 'junegunn/goyo.vim'
 	use 'rmolin88/pomodoro.vim'
+	use 'rust-lang/rust.vim'
 	use 'dracula/vim'
 	use 'skywind3000/asyncrun.vim'
 	-- Discord Presence

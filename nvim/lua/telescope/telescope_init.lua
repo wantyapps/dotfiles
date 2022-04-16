@@ -1,6 +1,7 @@
 local actions = require "telescope.actions"
 require('telescope').setup{
 	defaults = {
+		theme = "ivy",
 		prompt_position = "bottom",
 		prompt_prefix = "> ",
 		selection_caret = "> ",

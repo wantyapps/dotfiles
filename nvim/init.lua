@@ -13,7 +13,7 @@ require('wanty.plugins')
 require('telescope.telescope_init')
 
 -- Setting the colorscheme
-vim.cmd('colorscheme catppuccin')
+vim.cmd('colorscheme gruvbox')
 
 -- GOYO
 vim.cmd('autocmd vimenter *.md Goyo')

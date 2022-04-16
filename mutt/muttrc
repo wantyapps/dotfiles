@@ -3,6 +3,7 @@ set smtp_url = "smtp://me@mail.wantyapps.xyz:587"
 
 set from = "me@wantyapps.xyz"
 set realname = "Uri Arev"
+set signature = "sig"
 
 set spoolfile = "+INBOX"
 set record = "+Sent"
@@ -15,3 +16,6 @@ source color.muttrc
 
 bind pager j next-line
 bind pager k previous-line
+
+# unset sig_dashes
+set sort = reverse-date-received

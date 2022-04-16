@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,7 +77,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git rust docker zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,8 +116,8 @@ export GITHUB_TOKEN="$(cat ~/.config/release_it_github_token.txt)"
 export MARKETSTACK_API_KEY="$(cat ~/.config/marketstack_token.txt)"
 export MANPAGER="col -b | nvim -c 'set ft=man nomod nolist ignorecase' -"
 alias t="tmux"
-alias npm="pnpm"
-alias npx="pnpx"
+# alias npm="pnpm"
+# alias npx="pnpx"
 alias fishies="asciiquarium"
 alias mutt="neomutt"
 alias pipes="pipes.sh -Rr 0"
@@ -122,8 +129,10 @@ alias e="exit"
 alias snekisneksnek="nsnake"
 alias qrcode="echo \"Never gonna give you up, never gonna let you down.\" | curl -d @/dev/stdin qrcode.show"
 alias jest="jest --verbose"
+alias lg="lazygit"
 # alias python="python3"
 alias ls="ls -G"
+alias make="gmake"
 alias snek="nsnake"
 alias vv="nvim"
 alias vim="nvim"
@@ -132,7 +141,7 @@ alias so="source ~/.config/zsh/.zshrc"
 alias zsr="nvim ~/.config/zsh/.zshrc"
 alias iv="nvim ~/.config/nvim/init.lua"
 alias g="git"
-alias gc="git commit"
+alias gc="git commit -s"
 alias gp="git push"
 alias ga="git add"
 alias gs="git status"
@@ -140,6 +149,7 @@ alias gd="git diff"
 alias gss="git status -s"
 alias rr="curl -L http://bit.ly/10hA8iC | bash"
 alias ips="arp -a | awk '{print \$2 \" \" \$4}' | tr -d '()'"
+unalias gk
 
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -156,7 +166,7 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 bindkey -v
 export KEYTIMEOUT=1
 
-bindkey -s '^n' 'cd ~/Documents/LaTeX\n'
+bindkey -s '^n' 'cd ~/Documents/\n'
 bindkey -s '^t' 'cd ~/.config/\n'
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
@@ -189,7 +199,14 @@ if command -v theme.sh > /dev/null; then
 fi
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
+# autoload -U promptinit; promptinit
+# prompt pure
 # export PATH="/Users/uriarev/.local/share/nvim/lsp_servers/:$PATH"
 export PATH="/Users/uriarev/.local/share/nvim/lsp_servers/jdtls/:$PATH"
-echo "DO SOME CODEWARS!!"
+# export PS1="]"
+# echo "Apple ]["
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

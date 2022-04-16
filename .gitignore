@@ -18,3 +18,8 @@ marketstack_token.txt
 bpytop/error.log
 zsh/.zcompdump*
 ncmpcpp/error.log
+weechat/
+slack-term/
+gobang/
+github-copilot/
+wtf/

@@ -64,6 +64,7 @@ yabai -m rule --add label="GNU Image Manipulation Program" app="^GIMP$" manage=o
 yabai -m rule --add label="Colorpicker" app="^Colorpicker$" manage=off
 yabai -m rule --add label="snwe" app="snwe" title=".*" manage=off
 yabai -m rule --add label="DaVinci Resolve" app="DaVinci Resolve" title="*" manage=off
+yabai -m rule --add label="Fontforge" app="^FontForge$" manage=off
 
 yabai -m signal --add event=application_front_switched action="${ubersicht_spaces_refresh_command}"
 yabai -m signal --add event=display_changed action="${ubersicht_spaces_refresh_command}"

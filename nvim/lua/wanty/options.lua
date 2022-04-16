@@ -63,7 +63,7 @@ vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\\<C-p>" : "\\<S-Tab>"')
 -- }}}
 
 -- Lightline Config {{{
-vim.cmd("let g:lightline = {'colorscheme': 'catppuccin', 'component_function': {'method': 'NearestMethodOrFunction'}}")
+vim.cmd("let g:lightline = {'colorscheme': 'gruvbox', 'component_function': {'method': 'NearestMethodOrFunction'}}")
 -- }}}
 
 -- LSP Lightbulb {{{
@@ -255,7 +255,7 @@ require'lspconfig'.jedi_language_server.setup{capabilities = capabilities}
 require'lspconfig'.vimls.setup{capabilities = capabilities}
 require'lspconfig'.rust_analyzer.setup{capabilities = capabilities}
 require'lspconfig'.asm_lsp.setup{capabilities = capabilities}
-require'lspconfig'.ltex.setup{capabilities = capabilities}
+-- require'lspconfig'.ltex.setup{capabilities = capabilities}
 require'lspconfig'.jdtls.setup{capabilities = capabilities}
 require'lspconfig'.kotlin_language_server.setup{capabilities = capabilities}
 -- }}}

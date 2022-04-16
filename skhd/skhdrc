@@ -12,8 +12,9 @@ ctrl + alt - 1  : yabai -m display --focus 1
 ctrl + alt - 2  : yabai -m display --focus 2
 
 alt - f : yabai -m window --toggle zoom-fullscreen
+alt + shift - f : yabai -m window --toggle float
 
-alt - return : kitty ~
+ctrl + cmd + alt - return : kitty ~
 
 alt - r : brew services restart yabai
 alt - z : zathura
