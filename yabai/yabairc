@@ -73,3 +73,6 @@ yabai -m signal --add event=window_created action="${ubersicht_spaces_refresh_co
 yabai -m signal --add event=window_destroyed action="${ubersicht_spaces_refresh_command}"
 yabai -m signal --add event=window_focused action="${ubersicht_spaces_refresh_command}"
 yabai -m signal --add event=window_title_changed action="${ubersicht_spaces_refresh_command}"
+
+SPACEBAR_HEIGHT=$(spacebar -m config height)
+yabai -m config external_bar all:0:$SPACEBAR_HEIGHT
