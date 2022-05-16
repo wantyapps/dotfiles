@@ -13,9 +13,12 @@ set postponed = "+Drafts"
 mailboxes =INBOX =Sent =Trash =Drafts =Junk
 
 source color.muttrc
+source dracula.muttrc
 
 bind pager j next-line
 bind pager k previous-line
+# bind index,pager § exec pipe-message ./scripts/edit_email.sh
 
 # unset sig_dashes
 set sort = reverse-date-received
+set signature = "$HOME/.config/mutt/sig"
