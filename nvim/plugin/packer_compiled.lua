@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/base16-black-metal-scheme",
     url = "https://github.com/metalelf0/base16-black-metal-scheme"
   },
+  ["bufferline.nvim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   catppuccin = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/catppuccin",
@@ -124,11 +129,6 @@ _G.packer_plugins = {
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
-  ["fidget.nvim"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/fidget.nvim",
-    url = "https://github.com/j-hui/fidget.nvim"
-  },
   ["fine-cmdline.nvim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/fine-cmdline.nvim",
@@ -149,15 +149,15 @@ _G.packer_plugins = {
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/morhetz/gruvbox"
   },
+  ["impatient.nvim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/impatient.nvim",
+    url = "https://github.com/lewis6991/impatient.nvim"
+  },
   ["lazygit.nvim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
     url = "https://github.com/kdheepak/lazygit.nvim"
-  },
-  ["lightline.vim"] = {
-    loaded = true,
-    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lightline.vim",
-    url = "https://github.com/itchyny/lightline.vim"
   },
   ["lsp-status.nvim"] = {
     loaded = true,
@@ -174,10 +174,25 @@ _G.packer_plugins = {
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  nerdtree = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nerdtree",
+    url = "https://github.com/preservim/nerdtree"
+  },
   ["nlua.nvim"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nlua.nvim",
     url = "https://github.com/tjdevries/nlua.nvim"
+  },
+  ["nord-vim"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nord-vim",
+    url = "https://github.com/arcticicestudio/nord-vim"
   },
   ["nui.nvim"] = {
     loaded = true,
@@ -188,6 +203,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-gps"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/nvim-gps",
+    url = "https://github.com/SmiteshP/nvim-gps"
   },
   ["nvim-lightbulb"] = {
     loaded = true,
@@ -316,6 +336,11 @@ _G.packer_plugins = {
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-secret",
     url = "https://github.com/ernstwi/vim-secret"
   },
+  ["vim-signature"] = {
+    loaded = true,
+    path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-signature",
+    url = "https://github.com/kshenoy/vim-signature"
+  },
   ["vim-vsnip"] = {
     loaded = true,
     path = "/Users/uriarev/.local/share/nvim/site/pack/packer/start/vim-vsnip",
@@ -348,5 +373,6 @@ if should_profile then save_profiles() end
 end)
 
 if not no_errors then
+  error_msg = error_msg:gsub('"', '\\"')
   vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end

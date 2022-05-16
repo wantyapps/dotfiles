@@ -9,18 +9,23 @@ local g = vim.g
 -- Options {{{
 opt.swapfile           = false
 wopt.number            = true
-wopt.relativenumber    = true
-wopt.cursorline        = true
+-- wopt.relativenumber    = true
+-- wopt.cursorline        = true
 wopt.spell             = true
 opt.hidden             = true
-opt.cmdheight          = 2
+-- opt.cmdheight          = 2
 opt.updatetime         = 300
 opt.showmode           = false
 opt.termguicolors      = true
+opt.tabstop            = 8
+opt.shiftwidth         = 8
+opt.softtabstop        = 8
 g.netrw_dirhistmax     = 0
-wopt.signcolumn        = "yes"
+-- wopt.signcolumn        = "yes"
 opt.pumblend           = 10
 opt.mouse	       = "a"
+-- opt.guifont            = "Victor Mono:h16"
+opt.guifont            = "Victor Mono NF"
 -- }}}
 
 -- Keymapping Stuff {{{
@@ -50,7 +55,7 @@ vim.cmd('nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>')
 vim.cmd('nnoremap <silent> Y     <cmd>lua vim.lsp.buf.rename()<CR>')
 -- Tab controls
 map('n', '<leader>tl', '<cmd>tabl<cr>', options)
-map('n', '<leader>tr', '<cmd>tabl<cr>', options)
+map('n', '<leader>tr', '<cmd>tabr<cr>', options)
 --}}}
 
 -- Plugin Config {{{
@@ -64,6 +69,46 @@ vim.cmd('inoremap <expr> <S-Tab> pumvisible() ? "\\<C-p>" : "\\<S-Tab>"')
 
 -- Lightline Config {{{
 vim.cmd("let g:lightline = {'colorscheme': 'gruvbox', 'component_function': {'method': 'NearestMethodOrFunction'}}")
+-- }}}
+
+-- Barbar config {{{
+-- vim.cmd("hi BufferTabpageFill ctermbg=NONE guibg=NONE")
+-- }}}
+
+-- Lualine config {{{
+local gps = require("nvim-gps")
+require("nvim-gps").setup()
+require('lualine').setup {
+	sections = {
+		lualine_c = {
+			{ gps.get_location, cond = gps.is_available, },
+			"filename"
+		}
+	},
+	theme = "gruvbox"
+}
+-- }}}
+
+-- Bufferline setup {{{
+-- local function diagnostics_indicator(_, _, diagnostics)
+-- 	local symbols = { error = ' ', warning = ' ', info = ' ' }
+-- 	local result = {}
+-- 	for name, count in pairs(diagnostics) do
+-- 		if symbols[name] and count > 0 then
+-- 			table.insert(result, symbols[name] .. count)
+-- 		end
+-- 	end
+-- 	result = table.concat(result, ' ')
+-- 	return #result > 0 and result or ''
+-- end
+
+-- require('bufferline').setup {
+-- 	options = {
+-- 		diagnostics = 'nvim_lsp',
+-- 		diagnostics_indicator = diagnostics_indicator,
+-- 		diagnostics_update_in_insert = false,
+-- 	}
+-- }
 -- }}}
 
 -- LSP Lightbulb {{{
@@ -115,52 +160,51 @@ require'nvim-lightbulb'.update_lightbulb {
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 --- }}}
 
--- Gitsigns Confg {{{
-require('gitsigns').setup {
-  signs = {
-    add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-    change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-  },
-  numhl = false,
-  linehl = false,
-  keymaps = {
-    -- Default keymap options
-    noremap = true,
-    buffer = true,
+-- Gitsigns Config {{{
+require('gitsigns').setup ({
+	signs = {
+		add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+		change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+		delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+		topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+		changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+	},
+	numhl = false,
+	linehl = false,
+	keymaps = {
+		-- Default keymap options
+		noremap = true,
+		buffer = true,
 
-    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
-    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
+		['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
+		['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
 
-    ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
-    ['v <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
-    ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
-    ['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
-    ['v <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
-    ['n <leader>hR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
-    ['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-    ['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
+		['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+		['v <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+		['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+		['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+		['v <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+		['n <leader>hR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
+		['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+		['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
 
-    -- Text objects
-    ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
-    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
-  },
-  watch_index = {
-    interval = 1000,
-    follow_files = true
-  },
-  current_line_blame = true,
-  current_line_blame_delay = 1000,
-  current_line_blame_position = 'eol',
-  sign_priority = 6,
-  update_debounce = 100,
-  status_formatter = nil, -- Use default
-  word_diff = false,
-  use_decoration_api = true,
-  use_internal_diff = true,  -- If luajit is present
-}
+		-- Text objects
+		['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+		['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
+	},
+	watch_gitdir = {
+		interval = 1000,
+		follow_files = true,
+	},
+	current_line_blame = true,
+	-- current_line_blame_opts[delay] = 1000,
+	-- current_line_blame_opts[virt_text_pos] = 'eol',
+	sign_priority = 6,
+	update_debounce = 100,
+	status_formatter = nil, -- Use default
+	word_diff = false,
+	-- diff_opts[internal] = true,  -- If luajit is present
+})
 -- }}}
 
 -- LSP Config {{{
@@ -245,8 +289,6 @@ require('nlua.lsp.nvim').setup(require('lspconfig'), {
   capabilities = capabilites
 })
 
-require"fidget".setup{}
-
 require'lspconfig'.gopls.setup{capabilities = capabilities}
 require'lspconfig'.ccls.setup{capabilities = capabilities}
 require'lspconfig'.tsserver.setup{capabilities = capabilities}
@@ -258,4 +300,5 @@ require'lspconfig'.asm_lsp.setup{capabilities = capabilities}
 -- require'lspconfig'.ltex.setup{capabilities = capabilities}
 require'lspconfig'.jdtls.setup{capabilities = capabilities}
 require'lspconfig'.kotlin_language_server.setup{capabilities = capabilities}
+require'lspconfig'.esbonio.setup{capabilities = capabilities}
 -- }}}

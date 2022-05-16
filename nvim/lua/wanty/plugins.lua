@@ -3,10 +3,22 @@ vim.cmd('packadd packer.nvim')
 return require('packer').startup(function()
 	use {'wbthomason/packer.nvim', opt = true}
 	use 'lewis6991/gitsigns.nvim'
-	use 'folke/tokyonight.nvim'
 	use 'folke/zen-mode.nvim'
+	use 'ghifarit53/tokyonight-vim'
+	use 'preservim/nerdtree'
+	use 'romgrk/barbar.nvim'
+	use 'Xuyuanp/nerdtree-git-plugin'
+	use 'lewis6991/impatient.nvim'
+	use 'arcticicestudio/nord-vim'
 	use 'tpope/vim-commentary'
+	-- use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 	use 'tpope/vim-dispatch'
+	use 'kshenoy/vim-signature'
+	use 'SmiteshP/nvim-gps'
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
 	use {
 		"folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
@@ -20,7 +32,7 @@ return require('packer').startup(function()
 	}
 	use 'morhetz/gruvbox'
 	use 'tpope/vim-fugitive'
-	use 'j-hui/fidget.nvim'
+	-- use 'j-hui/fidget.nvim'
 	use 'ap/vim-css-color'
 	use 'liuchengxu/vista.vim'
 	use 'voldikss/vim-floaterm'
@@ -39,7 +51,7 @@ return require('packer').startup(function()
 	use 'dracula/vim'
 	use 'skywind3000/asyncrun.vim'
 	-- Discord Presence
-	use 'andweeb/presence.nvim'
+	-- use 'andweeb/presence.nvim'
 	use 'puremourning/vimspector'
 	use 'kosayoda/nvim-lightbulb'
 	use 'SirVer/ultisnips'
@@ -77,7 +89,7 @@ return require('packer').startup(function()
 	use 'nvim-telescope/telescope.nvim'
 	use 'nvim-telescope/telescope-vimspector.nvim'
 	-- Lightline
-	use 'itchyny/lightline.vim'
+	-- use 'itchyny/lightline.vim'
 	-- Secret writing
 	use 'ernstwi/vim-secret'
 	-- TJ!!!
